@@ -13,7 +13,7 @@ Read applicable instructions, relevant intent from specs or human chat/comments,
 
 Use an ADR when a choice materially affects boundaries, interfaces, dependencies, data models, quality attributes, operations, or costly future change. Do not create one for every local coding choice or merely to populate `docs/adr/`.
 
-Identify the decision maker and task authority. Agents may choose architecture within the agreed scope without a separate human review. If reconstructing an existing architecture, state what was observed, where, and what rationale is unknown. Do not turn “the code does this” into a fabricated historical decision.
+Identify the decision maker and task authority. Agents may investigate and propose architecture within the agreed scope, but an ADR needs human review of the actual document before merge. Task authorization is not document approval. If reconstructing an existing architecture, state what was observed, where, and what rationale is unknown. Do not turn “the code does this” into a fabricated historical decision.
 
 ## Choose the record
 
@@ -23,7 +23,7 @@ Recheck availability before writing. Resolve a collision by changing an unpublis
 
 Adapt [the ADR template](assets/adr-template.md) and retain only useful detail:
 
-- **Metadata:** Status, date, decision maker and source, related specs, and supersession links when applicable. If a historical decision date is unknown, distinguish the recording date rather than backdating it.
+- **Metadata:** Status, date, decision maker and source, human review evidence or Pending, related specs, and supersession links when applicable. Identify the document revision covered by review. If a historical decision date is unknown, distinguish the recording date rather than backdating it.
 - **Context:** The problem, forces, and binding constraints, with evidence. Link requirements rather than restating the full spec.
 - **Decision:** One clear choice and the scope in which it applies. Make proposals visibly conditional until accepted.
 - **Alternatives:** Credible choices considered, including the status quo when plausible, with concrete reasons for accepting or rejecting them. Do not invent a prior evaluation or benchmarks.
@@ -32,7 +32,9 @@ Adapt [the ADR template](assets/adr-template.md) and retain only useful detail:
 
 ## Maintain decision history
 
-Use `Proposed` for unresolved choices and `Accepted` for a decision made by the human or an agent acting within the authorized task. Cite the actual decision maker and source, such as the task and orchestrator's rationale; agent acceptance must not be labeled human approval. Ask the human when the choice changes intent, conflicts with binding constraints, or needs a material preference the task does not resolve.
+Use `Proposed` for a new ADR until the human reviews and explicitly approves its actual text, even when the task already establishes the intended direction. Use `Accepted` only with that review evidence. Identify the agent's technical authorship separately from the human reviewer. Preserve historical status honestly; do not invent retrospective approval for an older record. Ask about a material unresolved choice while continuing unaffected work.
+
+After approval, updating Proposed to Accepted and recording the actual approval evidence does not need another review when the reviewed decision text is unchanged. Renaming or deleting an ADR still requires human review before merge.
 
 Use existing project lifecycle terms where established. Otherwise use `Proposed`, `Accepted`, `Rejected`, `Deprecated`, and `Superseded` as needed. Mark a proposal rejected only when evidence supports that outcome.
 
@@ -46,4 +48,6 @@ Check the decision against relevant specs and other accepted ADRs. Verify number
 
 When using GitHub delivery, link the originating issue/PR and decision comment when relevant. Keep execution status and review/fix logs on GitHub. Coordinate new ADR IDs with the orchestrator when several workers are active.
 
-Return the record with the proposed or accepted choice, material trade-offs, and any missing human decision. Keep task plans and implementation logs outside the ADR.
+Complete drafting, verification and agent review before requesting human review. Present the document/diff or PR and leave it unmerged until explicit human approval of the reviewed content is recorded in chat or GitHub with the revision covered. The gate includes editorial ADR edits and mixed code/ADR PRs. Agent comments, passing checks, shared-account reviews and earlier task authorization are not human approval. Changes to reviewed content require renewed review; unrelated code commits or recording approval evidence without changing that content do not. Never silently enable auto-merge while review is pending.
+
+Return the record, material trade-offs and reviewable revision. State whether human review is pending and why. Keep task plans and implementation logs outside the ADR; this review gate does not create a separate approval step for ordinary code-only work.

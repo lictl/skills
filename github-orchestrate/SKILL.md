@@ -5,7 +5,7 @@ description: Delegate GitHub issue-scoped implementation to agents in isolated w
 
 # GitHub Orchestrate
 
-All agents use the same GitHub account, which owns the repository. Humans normally direct work through chat or comments, not PR reviews. Agents continue autonomously through implementation, review, and merge until the authorized task is complete or they need a human decision/action. The parent reviews PRs through comments and merges after review and required checks pass; no routine human sign-off is needed.
+All agents use the same GitHub account, which owns the repository. Agents continue autonomously through authorized implementation, review and ordinary code-only merges. PRs that create or change ADRs or specs require human review before merge, including editorial document edits and mixed code/document PRs. A shared account, agent review, successful check or instruction to start work is not evidence of human review.
 
 Delegate implementation by default; parallelize independent slices and serialize dependencies. Use one worker for a small task. If agents are unavailable, preserve the same GitHub work log while working sequentially. Writing or installing this skill alone does not start a live task.
 
@@ -36,7 +36,11 @@ Issues, commits, and PRs form the work log. Commits record concise changes and r
 
 ## 3. Review and fix
 
-The orchestrator reviews the actual diff and evidence against the issue's criteria and relevant specs/ADRs. Post a short review comment identifying the reviewed head SHA, actionable findings, and any missing verification. Use inline comments when useful; no formal approving review is needed.
+The orchestrator reviews the actual diff and evidence against the issue's criteria and relevant specs/ADRs. Post a short review comment identifying the reviewed head SHA, actionable findings, and any missing verification. Use inline comments when useful. Agent review can be recorded as a comment; the human ADR/spec review below remains required.
+
+For ADR/spec changes, finish the agent review and fixes first, then present the actual documents/diff and PR for human review. Record explicit human approval from chat or GitHub and the document revision it covers. Do not infer approval from silence or the agent's use of the human's GitHub account. Keep proposed/draft documents visibly pending; do not mark them Accepted/Approved on the strength of task authorization alone.
+
+The gate covers document creation, revision, renaming and deletion. After actual approval, recording its evidence and changing Proposed to Accepted or Draft to Approved does not require another review if the reviewed decision or requirements text remains unchanged.
 
 Send finding links to the worker. The worker fixes the same branch, pushes, and replies with the fix commit and evidence. The orchestrator verifies fixes and changed revisions, including relevant integration changes. Resolve ordinary failures autonomously and continue unaffected slices. If a blocker cannot be resolved within the task or needs human input, state the problem, attempts, and exact decision/action needed; do not merely hand back a failed check or loop without progress.
 
@@ -44,8 +48,10 @@ Create or reuse follow-up issues for separate useful work. Reuse the issue templ
 
 ## 4. Merge and close the loop
 
-Once criteria are verified and findings resolved, mark a draft PR ready, confirm required checks and mergeability for the reviewed head, and merge it using the shared owner account. Use the repository's normal merge method and protect against merging an unreviewed newer head. Do not pause for another human approval. If GitHub actually blocks the merge, report that blocker without changing repository protections as a workaround.
+Once criteria are verified and findings resolved, mark a draft PR ready and confirm required checks and mergeability for the reviewed head. If it changes an ADR or spec, leave it open with auto-merge disabled until the human has approved the actual document content. Changed reviewed content needs renewed human review; unrelated code commits or recording approval evidence without changing that content do not invalidate it. Agent re-review still covers every new PR head. Unchanged references to an ADR/spec alone do not trigger this gate.
+
+When the applicable review gate is satisfied, merge using the shared owner account and the repository's normal method, protecting against an unreviewed newer head. Do not add another approval step for code-only PRs. If GitHub blocks the merge, report the actual blocker without changing protections as a workaround.
 
 Confirm the merge, update/close the completed issue, and continue the remaining authorized slices. A parent remains open until its outcome is complete; an unrelated follow-up is a separate task. Confirm memory notes and other useful state are preserved before removing finished worktrees.
 
-Finish with issue/PR links, merge result or concrete blocker, verification, and follow-ups. Another orchestrator should be able to resume from GitHub without the private agent conversation.
+Finish with issue/PR links, merge result or pending human document review, verification and follow-ups. A PR awaiting review is not a completed merge and its delivery issue stays open. Another orchestrator should be able to resume from GitHub without the private agent conversation.

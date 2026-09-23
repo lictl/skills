@@ -6,6 +6,7 @@
 
 - Intent: {{approved spec/criterion links or explicit human request}}
 - Decisions: {{relevant ADRs or None}}
+- Document review: {{ADR/spec changes need human review of the actual revision before merge; planned documents or Not applicable}}
 - In scope: {{bounded change}}
 - Out of scope: {{nearby work excluded}}
 

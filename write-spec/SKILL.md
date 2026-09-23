@@ -43,10 +43,10 @@ Prefer “Queued jobs recover after restart” over a database table, locking st
 
 ## Preserve human ownership
 
-- Human instructions in chat or comments can authorize the spec's intent. Record that source and use `Approved` for covered intent, `Draft` for unresolved proposals. This status does not claim a human read the generated document. Do not require another review simply because an agent wrote it down.
+- Human instructions in chat or comments establish intent, but do not establish review of the resulting spec. Record the intent source separately. Keep a new spec `Draft` until the human reviews and explicitly approves its actual text; then use `Approved` with the review source and document revision covered.
 - Do not invent a reviewer or approval, and do not treat a request to draft as acceptance of agent-invented behavior. Continue already-authorized implementation while only the portions needing a material human decision remain pending.
 - For a material revision, make the intent delta and affected acceptance criteria explicit. Keep prior approval distinguishable from the proposed revision, using version control or a separate draft where necessary. Update approval status only to reflect real evidence.
-- Editorial corrections, clarified wording that preserves meaning, resolved questions reflecting an existing decision, and evidence links do not require a new approval ritual. Make any uncertain semantic change visible.
+- All changes to a spec, including editorial corrections, evidence links, renaming and deletion, require human review before merge. Preserve prior approved content/status distinctly while a revision is pending. Do not invent retrospective review for historical documents. After actual approval, updating Draft to Approved and recording its evidence does not need another review when the reviewed requirements text is unchanged.
 - When a child conflicts with its parent or an accepted ADR, flag it for resolution at the owning level. Do not silently alter the parent, discard a constraint, or weaken an acceptance test.
 
 ## Review and deliver
@@ -55,4 +55,6 @@ Read the complete spec. Check that every criterion traces to stated intent, no a
 
 When using GitHub delivery, issues link the applicable spec and criterion IDs; PRs carry verification and review history. Keep assignments and execution logs out of the spec. An issue or orchestrator comment cannot silently change approved intent. Coordinate new spec IDs with the orchestrator when several workers are active.
 
-Return the document, a concise intent delta for revisions, and only the material unresolved questions. Spec writing alone does not authorize implementation. If implementation is already part of the authorized task, proceed with settled slices and place test results in the delivery evidence, not a growing spec log.
+Finish the draft, checks and agent review, then present the actual document/diff or PR for human review. Leave it unmerged until explicit human approval of the reviewed content is recorded in chat or GitHub. This includes mixed code/spec PRs; passing checks, agent reviews, a shared account or approval to start work do not satisfy the gate. Changes to reviewed content require renewed review; unrelated code commits or adding the approval record without changing that content do not. Do not enable auto-merge while review is pending.
+
+Return the reviewable document and concise intent delta, identifying pending human review. Spec writing alone does not authorize implementation. If implementation is already authorized, continue settled work independently while preserving the spec merge gate; keep execution evidence in the issue/PR. Ordinary code-only work does not acquire a new approval step.

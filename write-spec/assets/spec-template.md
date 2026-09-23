@@ -1,8 +1,9 @@
 # {{NNN}}: {{Behavior or capability}}
 
-- Status: {{Draft for unresolved intent; Approved when human direction covers it}}
+- Status: {{Draft until human review; Approved after explicit approval of this document}}
 - Owner: {{human owner or Unassigned}}
-- Intent source: {{human request/chat/comment or Pending; no separate sign-off required}}
+- Intent source: {{human request/chat/comment or Pending; separate from document review}}
+- Human review: {{Pending, or human approval source/date and document revision covered}}
 - Parent: {{relative link or None}}
 
 ## Problem

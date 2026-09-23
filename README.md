@@ -26,7 +26,7 @@ On the next turn, open the project you want to set up and ask:
 Use $agentic-bootstrap to adopt this workflow in this project.
 ```
 
-Bootstrap leaves local changes uncommitted. Review and commit them yourself; subsequent tasks run autonomously through the issue/PR workflow.
+Bootstrap leaves local changes uncommitted. Review and commit them yourself; subsequent tasks use the issue/PR workflow. ADR/spec changes require human document review before merge; ordinary code-only work remains autonomous.
 
 For a manual Codex install, copy the complete skill folders into your project's `.agents/skills/` or your personal `~/.agents/skills/`, including their assets and references. If the skills do not appear, restart Codex. See the [official skill installation guidance](https://learn.chatgpt.com/docs/build-skills#install-curated-skills-for-local-use).
 
@@ -62,12 +62,12 @@ Reuse the spec that owns the behavior. When replacing an accepted architecture d
 
 ## Working agreement
 
-Bootstrap is the only local, human-committed setup step. After the human reviews and commits it, the remaining skills operate autonomously within the requested scope:
+Bootstrap is a local, human-committed setup step. After adoption, agents work within the requested scope; ADR/spec edits retain a human review gate before merge:
 
-Human direction in chat/comments → compact intent → implementation slice → tests → orchestrator review/fixes → merge → next authorized slice.
+Human direction → draft/implementation → checks → agent review/fixes → human document review when ADR/spec content changes → merge → next authorized slice.
 
 - Specs answer seven questions: problem, desired behavior, scope, non-goals, constraints, acceptance criteria, and open questions. About 200 lines is a readability diagnostic, not a target.
-- Humans establish intent through chat/comments; agents work autonomously within it. A separate spec or PR sign-off is not required. Ask for an unresolved material decision or necessary human action, and continue unaffected work.
+- Humans establish intent through chat/comments; this is distinct from review of an actual ADR/spec. New documents remain Proposed/Draft until explicit human approval is recorded with the reviewed revision. Complete drafting, checks and agent review before presenting the document/diff or PR. Editorial ADR/spec edits and mixed PRs also require human review. Changes to reviewed content need renewed review; unrelated code commits or adding approval evidence without changing that content do not. Ordinary code-only work stays autonomous.
 - Approved specs define intent; accepted ADRs constrain architecture. Tests, code, and runtime are evidence of current behavior. Conflicts require explicit resolution, not a simplistic ranking that lets code erase a decision.
 - Prefer slices that demonstrate observable behavior through the necessary layers. Bounded experiments and enabling changes are useful when they resolve a named uncertainty.
 - Prefer feature tests: unit tests for logic and e2e tests for important user workflows where appropriate. Bug fixes should have focused regression/negative coverage that demonstrates the original failure and the fix when practical. Avoid redundant tests, implementation-mirroring assertions, and mandatory coverage at every layer.
@@ -79,7 +79,7 @@ This workflow does not require a spec for every typo or an ADR for every coding 
 
 ## GitHub delivery
 
-Human intent → orchestrator issue → delegated worker/worktree → PR with evidence → orchestrator review → worker fixes → re-review → merge.
+Human intent → issue → delegated worker/worktree → PR with evidence → agent review/fixes → human review for ADR/spec edits → merge.
 
 Delegate implementation by default and parallelize independent slices. Use one active writer, branch, and worktree per issue, normally with one PR. Larger tasks use a parent issue and linked slice issues; dependent work waits or declares an explicit stacked-PR integration plan.
 
@@ -93,9 +93,9 @@ Issue #42
 
 Issues, Git commits, and PRs form the durable execution record. Issues track scope, ownership, dependencies, and current state; commits briefly explain changes and why; PRs record verification, caveats, review findings, and fixes. Specs, ADRs, and memory keep their distinct roles.
 
-All agents use the shared GitHub account that owns the repository. The orchestrator reviews through PR comments and merges directly once acceptance criteria, review findings, and required checks are satisfied. No separate approving account or per-PR human confirmation is needed. If GitHub blocks a merge, report the actual blocker.
+All agents use the shared GitHub account that owns the repository. The orchestrator reviews through PR comments. For ADR/spec edits, leave the PR open with auto-merge disabled until actual human approval of the document content is recorded; agent reviews, passing checks and task authorization do not satisfy that gate. Once applicable reviews and checks pass, merge the current reviewed head. Unchanged references to ADRs/specs do not add a human gate to code-only work. Report actual GitHub blockers without changing protections as a workaround.
 
-Follow-up issues capture separate actionable work; they cannot hide unfinished acceptance criteria. Agents may decide and record architecture within agreed scope; humans resolve material changes to intent or choices the task cannot settle. Keep useful review/fix history on GitHub without adding a parallel approval process or task system.
+Follow-up issues capture separate actionable work; they cannot hide unfinished acceptance criteria or missing document review. Agents research and propose architecture within agreed scope; humans review ADR/spec text and resolve material choices. Keep intent, review evidence and execution history connected on GitHub rather than creating a parallel task system.
 
 The [orchestration skill](github-orchestrate/SKILL.md) includes just issue and PR templates, plus [worktree and GitHub details](github-orchestrate/references/operations.md). Follow-ups reuse the issue template; reviews are short comments.
 

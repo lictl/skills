@@ -1,10 +1,11 @@
 # {{NNN}}: {{Decision title}}
 
-- Status: {{Proposed if unresolved; Accepted once decided within task authority}}
+- Status: {{Proposed until human review; Accepted after explicit approval of this document}}
 - Recorded: {{YYYY-MM-DD}}
 - Decision date: {{YYYY-MM-DD or Pending/Unknown}}
 - Decision maker: {{human or agent, or Undecided}}
 - Decision source: {{task/decision comment or human direction; Pending if unresolved}}
+- Human review: {{Pending, or human approval source/date and document revision covered}}
 - Related specs: {{relative links or None}}
 - Supersedes: {{relative link or None; a proposed replacement is not yet effective}}
 

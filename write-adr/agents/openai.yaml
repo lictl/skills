@@ -1,4 +1,4 @@
 interface:
   display_name: "Write ADR"
   short_description: "Record architecture decisions and their trade-offs"
-  default_prompt: "Use $write-adr to document the architecture decision, its alternatives, and consequences."
+  default_prompt: "Use $write-adr to draft the architecture decision, alternatives, and consequences for my review before merge."

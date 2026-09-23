@@ -37,7 +37,9 @@ Put references at the bottom: `Resolves: #123` only for an issue the change comp
 
 ## Merge
 
-The orchestrator's review comment and successful verification are the workflow's review gate. Merge directly with the shared owner account; do not add a separate reviewer or approval ceremony. Use the reviewed head SHA as the merge precondition when supported, and re-review if it changes. Confirm GitHub reports the PR merged before reporting completion. If existing repository rules prevent merging, report the actual unmet requirement.
+The orchestrator's review and successful verification permit ordinary code-only merges. Any PR creating or editing an ADR or spec also needs explicit human approval of the actual document content before merge, including editorial edits and mixed PRs. Record the human source and reviewed document revision; agent reviews through the shared account do not count. Leave the PR open and auto-merge disabled while approval is pending. Changes to approved content need renewed human review; unrelated code commits or recording approval without changing reviewed content do not. Merely referencing an unchanged ADR/spec does not trigger the gate.
+
+Use the current agent-reviewed head SHA as the merge precondition and re-review if it changes. Confirm GitHub reports the PR merged before reporting completion. If existing repository rules prevent merging, report the actual unmet requirement. Do not change protections to avoid either review gate.
 
 Check the final squash/merge message follows the commit convention and retains useful issue/PR references and any applicable changelog trailer. Replace verbose generated message concatenations with a concise summary so the merged Git history remains a useful work log.
 

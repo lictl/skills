@@ -26,7 +26,9 @@ A spec has seven body headings: Problem, Desired behavior, Scope, Non-goals, Con
 
 An ADR records one significant decision with date, proposed/accepted status, decision maker and source, context, decision, credible alternatives, and consequences. Record costs and revisit conditions where useful. Retain accepted history; a changed decision gets a new ADR linked to the superseded one. No ceremony is needed for every local implementation choice.
 
-Human direction in chat or comments is sufficient to establish intent within its stated scope; do not impose a separate spec or PR sign-off. Agents may accept architectural decisions within that scope and record their own decision and reasoning. Neither agent decisions nor passing checks constitute human approval of new product behavior. Keep authorship and authority honest, and ask only when a material choice or blocker needs the human.
+Human direction establishes intent, but ADR/spec documents need human review of their actual text before merge. Keep new ADRs Proposed and specs Draft until explicit human approval is recorded with the source and document revision. Agents may research, propose, validate and publish a reviewable PR; they cannot substitute their own review or passing checks for human approval. This gate includes editorial ADR/spec edits and mixed PRs. Changed reviewed content needs renewed review; unrelated code commits or adding the approval record without changing that content do not. Preserve historical status without inventing earlier human review. Ordinary code-only delivery remains autonomous.
+
+Include document renames and deletions in that gate. After actual approval, updating Proposed to Accepted or Draft to Approved and recording its evidence does not require another review when the reviewed decision or requirements text is unchanged.
 
 ## Proportionate testing
 
@@ -48,11 +50,11 @@ Execution progress belongs in the project's issue, PR, or task tracker. In the G
 
 ## Ongoing work loop
 
-1. Before a slice, re-ground in the current request/comments and applicable product, capability, and feature specs, then relevant accepted decisions and interfaces. Read only the relevant branch of the spec tree; an unchanged revision need not be ritualistically reread. Continue authorized work without routine human checkpoints; ask for a material decision or action only when needed and continue unaffected work.
+1. Before a slice, re-ground in the current request/comments and applicable product, capability, and feature specs, then relevant accepted decisions and interfaces. Read only the relevant branch of the spec tree; an unchanged revision need not be ritualistically reread. Continue authorized work autonomously while preserving the ADR/spec human-review gate before merge; ask for other material decisions/actions only when needed and continue unaffected work.
 2. Name the observable result, acceptance criteria, and verification method. Prefer a vertical slice; permit a time-bounded spike or enabling change when it resolves a named uncertainty. A spike is evidence, not approval to ship its assumptions.
 3. Implement and check against compiler, tests, runtime, and human feedback. Derive behavioral checks from approved examples and criteria, not just from the code being generated. Review important failure paths and applicable compatibility, migration, accessibility, security, or performance constraints.
 4. If a discovery changes intended behavior, propose the smallest explicit spec change and obtain any missing human decision before depending on it. Otherwise route it to its durable home below. Editorial repairs, resolved questions, and links may keep a spec accurate without changing intent.
-5. Review the diff and results against the criteria. Record which checks passed, failed, or were not run and why. In GitHub mode, the orchestrator posts findings, verifies fixes against the current PR head, and merges directly using the shared owner account once findings and required checks pass. Report any actual blocker. A follow-up issue does not waive a failed criterion.
+5. Review the diff and results against the criteria. Record which checks passed, failed, or were not run and why. In GitHub mode, the orchestrator posts findings and verifies fixes against the current head. For ADR/spec changes, finish this work before presenting the documents for human review; leave the PR open with auto-merge disabled until approval is recorded. Once applicable reviews and checks pass, merge using the shared owner account. A follow-up issue does not waive a failed criterion or missing document review.
 
 | Discovery | Durable home |
 | --- | --- |
