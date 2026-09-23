@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agentic Bootstrap"
+  short_description: "Adopt a compact, human-owned development workflow"
+  default_prompt: "Use $agentic-bootstrap to inspect this project and establish a compact agentic workflow."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Orchestrate"
+  short_description: "Delegate issue-scoped work through reviewed pull requests"
+  default_prompt: "Use $github-orchestrate to delegate this task through GitHub issues and worktrees, review the PRs, and merge them with the shared owner account."

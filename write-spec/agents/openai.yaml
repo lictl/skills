@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Spec"
+  short_description: "Write compact specs with clear acceptance criteria"
+  default_prompt: "Use $write-spec to draft or revise a compact, human-owned spec for the requested change."
