@@ -4,7 +4,7 @@ Agents expand execution capacity. Humans retain ownership of intent. These skill
 
 | Skill | Use it to |
 | --- | --- |
-| [agentic-bootstrap](agentic-bootstrap/SKILL.md) | Inspect a new or existing project and establish or adapt its documentation and working agreement. |
+| [agentic-bootstrap](agentic-bootstrap/SKILL.md) | Prepare local documentation and workflow changes for a human to review and commit. |
 | [write-spec](write-spec/SKILL.md) | Draft or revise compact product, capability, and feature intent with observable acceptance criteria. |
 | [write-adr](write-adr/SKILL.md) | Record a significant architecture choice, its rationale, alternatives, consequences, and lifecycle. |
 | [github-orchestrate](github-orchestrate/SKILL.md) | Delegate issue-scoped implementation to workers in worktrees, publish PRs, and review/fix them with a traceable GitHub work log. |
@@ -25,6 +25,8 @@ On the next turn, open the project you want to set up and ask:
 ```text
 Use $agentic-bootstrap to adopt this workflow in this project.
 ```
+
+Bootstrap leaves local changes uncommitted. Review and commit them yourself; subsequent tasks run autonomously through the issue/PR workflow.
 
 For a manual Codex install, copy the complete skill folders into your project's `.agents/skills/` or your personal `~/.agents/skills/`, including their assets and references. If the skills do not appear, restart Codex. See the [official skill installation guidance](https://learn.chatgpt.com/docs/build-skills#install-curated-skills-for-local-use).
 
@@ -59,6 +61,8 @@ Write an **ADR** when a significant technical choice has alternatives and conseq
 Reuse the spec that owns the behavior. When replacing an accepted architecture decision, create a new ADR and link the superseded record so its reasoning remains available.
 
 ## Working agreement
+
+Bootstrap is the only local, human-committed setup step. After the human reviews and commits it, the remaining skills operate autonomously within the requested scope:
 
 Human direction in chat/comments → compact intent → implementation slice → tests → orchestrator review/fixes → merge → next authorized slice.
 

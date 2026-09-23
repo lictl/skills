@@ -17,6 +17,7 @@
 
 ## Working agreement
 
+- `agentic-bootstrap` is local-only: prepare and verify setup changes, then leave them uncommitted for human review and commit. The autonomous workflow below applies to subsequent tasks.
 - Before each slice, check the current request, applicable parent and feature specs, relevant accepted ADRs, and interfaces. Reuse unchanged context; check revisions when work resumes.
 - Humans direct intent through chat or comments. Continue implementation, agent review, and merge autonomously within that scope; no routine document or PR sign-off is required. Ask only for an actual blocker, material intent decision, or necessary human action, and continue unaffected work. Record agent-made technical decisions honestly.
 - Parent specs constrain child specs. Accepted ADRs constrain architecture. Tests, code, and runtime show implemented behavior. Memory is fallible context. Surface conflicts instead of silently choosing a convenient authority.

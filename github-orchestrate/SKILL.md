@@ -9,6 +9,8 @@ All agents use the same GitHub account, which owns the repository. Humans normal
 
 Delegate implementation by default; parallelize independent slices and serialize dependencies. Use one worker for a small task. If agents are unavailable, preserve the same GitHub work log while working sequentially. Writing or installing this skill alone does not start a live task.
 
+`agentic-bootstrap` is excluded from this delivery loop: its setup changes stay local and uncommitted for human review and commit. Subsequent authorized tasks use the autonomous workflow below.
+
 ## 1. Define and delegate
 
 Read project guidance, the current request, and relevant specs/ADRs. Confirm the repository and base branch, then find existing task issues, PRs, and worktrees before creating more.

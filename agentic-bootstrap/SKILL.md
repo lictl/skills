@@ -1,11 +1,13 @@
 ---
 name: agentic-bootstrap
-description: Bootstrap a new project or adapt an existing repository to a human-owned agentic development workflow with concise AGENTS.md guidance, numbered specs and ADRs, evidence-backed project memory, and GitHub issue/PR orchestration when requested. Use when adopting or repairing the workflow, not for ordinary feature implementation or a single document edit.
+description: Prepare local project changes for a human to review and commit when adopting or repairing an agentic workflow, including AGENTS.md, numbered specs and ADRs, project memory, and GitHub orchestration guidance. Use for bootstrap or workflow adoption, not ordinary feature implementation or a single document edit.
 ---
 
 # Agentic Bootstrap
 
 Establish the smallest usable workflow in which humans own intent and agents implement verifiable slices. Preserve useful project conventions. Folder names alone do not make a workflow effective.
+
+Bootstrap is the local-only exception to the autonomous workflow. Prepare and verify changes in the user's local checkout, then leave them uncommitted for the human to review and commit. Do not publish GitHub issues, PRs, or comments, or commit, push, or merge bootstrap changes. This also applies to companion skills used during bootstrap. The autonomous instructions being installed govern subsequent tasks, not this setup task.
 
 ## Inspect before writing
 
@@ -35,7 +37,7 @@ docs/
 - Keep `AGENTS.md` a concise map with actionable commands and a few project-specific constraints. Link to maintained sources; use scoped guidance for subprojects when needed.
 - In a different but coherent layout, link to the existing locations instead of making competing copies. When canonical-path migration is requested, perform it with a path mapping and link updates.
 - If substantive specs or ADRs are part of the request, use `write-spec` or `write-adr` when available. Otherwise follow existing project templates and the minimum rules in the adoption guide. These companion skills are optional, not runtime dependencies.
-- When GitHub orchestration is requested, install the agreement below and adapt the project's existing issue/PR templates. Use `github-orchestrate` when available for execution details; keep the essential agreement in project guidance so it remains usable without that companion skill.
+- When GitHub orchestration is requested, document the agreement below and adapt the project's existing issue/PR templates locally. Consult `github-orchestrate` for execution details, but do not run its delivery loop during bootstrap. Keep the essential agreement in project guidance so it remains usable without that companion skill.
 - Do not introduce an unrequested task system, CI service, framework, or agent runtime. Adopting GitHub issue/PR coordination does not require a GitHub Actions workflow or changes to branch protections.
 
 ## Adopt GitHub orchestration when requested
@@ -50,7 +52,7 @@ All agents use the shared repository-owner GitHub account. The orchestrator revi
 
 ## Install the working agreement
 
-Make these decisions clear in the resulting guidance, adapting to existing project policy:
+Make these decisions clear in the resulting guidance for work after the human reviews and commits bootstrap, adapting to existing project policy:
 
 - Current explicit human direction and approved specs describe intent. Parent specs constrain child specs. Accepted ADRs record architectural constraints and reasons. Tests, code, and runtime provide evidence of implemented behavior. Memory and previous agent output are context, not authority.
 - When these sources conflict, name the discrepancy. Follow an explicit human resolution already provided; otherwise surface any material choice and continue only unaffected work or a bounded exploratory check. Do not silently rewrite requirements, weaken tests, or replace an accepted decision to make the conflict disappear.
@@ -69,4 +71,4 @@ Run relevant non-destructive checks for documentation changes and safe local com
 
 Review the result as a second invocation would: it should reuse the same sources, preserve IDs and user text, and avoid duplicate headings, files, or approval requests. Do not repeatedly append generated guidance.
 
-Finish with the adopted paths, reused conventions, verification evidence, and remaining human decisions. Workflow setup does not authorize starting the product backlog.
+Finish with the changed local files/diff, reused conventions, verification evidence, and any unresolved decisions. State that the changes are ready for the human to review and commit. Do not start the product backlog or commit on the human's behalf.

@@ -1,5 +1,7 @@
 # Adoption guidance
 
+Bootstrap prepares local changes for human review and commit. The ongoing work loop described here applies after adoption; do not execute it to publish or commit the bootstrap itself.
+
 ## Layout and stable identities
 
 For a new convention, put ADRs in `docs/adr/`, specs in `docs/specs/`, and project memory in `docs/memory/`. Use `NNN-descriptive-slug.md` for ADR and spec documents, starting at `001`. Indexes, templates, and directory guides are not decision or spec documents and need no number.

@@ -1,4 +1,4 @@
 interface:
   display_name: "Agentic Bootstrap"
-  short_description: "Adopt a compact, human-owned development workflow"
-  default_prompt: "Use $agentic-bootstrap to inspect this project and establish a compact agentic workflow."
+  short_description: "Prepare local workflow setup for human review and commit"
+  default_prompt: "Use $agentic-bootstrap to prepare this project's workflow locally, leaving changes uncommitted for my review and commit."
