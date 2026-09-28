@@ -52,6 +52,10 @@ Once criteria are verified and findings resolved, mark a draft PR ready and conf
 
 When the applicable review gate is satisfied, merge using the shared owner account and the repository's normal method, protecting against an unreviewed newer head. Do not add another approval step for code-only PRs. If GitHub blocks the merge, report the actual blocker without changing protections as a workaround.
 
-Confirm the merge, update/close the completed issue, and continue the remaining authorized slices. A parent remains open until its outcome is complete; an unrelated follow-up is a separate task. Confirm memory notes and other useful state are preserved before removing finished worktrees.
+Confirm the merge and update/close the completed issue. A parent remains open until its outcome is complete; an unrelated follow-up is a separate task.
 
-Finish with issue/PR links, merge result or pending human document review, verification and follow-ups. A PR awaiting review is not a completed merge and its delivery issue stays open. Another orchestrator should be able to resume from GitHub without the private agent conversation.
+GitHub issues and PRs are the durable work log. Summarize the outcome, tested revision, verification, caveats and follow-ups there, with essential evidence attached or linked. Do not rely on local paths, retained worktrees or extra recovery archives as the record.
+
+After delivery or explicit abandonment, the parent must remove the finished worktree and verify cleanup before reporting completion; this is part of the task, not a later human chore. First confirm that workers, processes and dependent work no longer use it, and resolve unpublished work or private operational files. Protect primary, pinned, shared and in-use checkouts. Follow [worktree closeout](references/operations.md#worktree-closeout) and record the cleanup result or concrete blocker and owner on the issue/PR. Continue remaining authorized slices after closeout.
+
+Finish with issue/PR links, merge result or pending human document review, verification, follow-ups and worktree cleanup status. A PR awaiting review is not a completed merge and its delivery issue stays open. Another orchestrator should be able to resume from GitHub without the private agent conversation or old checkout.

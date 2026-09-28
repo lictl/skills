@@ -17,7 +17,13 @@ Do not force-reset an occupied branch or overwrite an existing directory. A new 
 
 Worktrees share Git refs/configuration and may share ports, databases, simulators, or external build directories. Coordinate shared resources or serialize conflicting checks. Dependent slices normally start after their prerequisite merges, from a refreshed base. Use stacked PRs only when needed and record their merge order and base changes.
 
-After merge or explicit abandonment, preserve needed commits, uncommitted/untracked work, and useful ignored artifacts before `git worktree remove`. Do not remove an active worker's checkout. Disposable caches need no retention.
+### Worktree closeout
+
+The parent must close out each finished worktree after delivery or explicit abandonment. Record the outcome, tested revision, verification and limits, decisions, caveats and follow-ups in the GitHub issue/PR first. Publish needed code through the authorized delivery flow and attach or link essential, secret-free evidence; a local file path is not a durable handoff. Do not retain whole checkouts, raw logs or extra local recovery archives merely as history.
+
+Before removal, confirm that no worker, process or dependent work still uses the checkout. Inspect tracked, untracked and ignored files and resolve any unpublished work or private operational files; do not silently discard them or upload secrets. Pending delivery, review or approval means the work is unfinished. Protect primary, pinned, shared and in-use checkouts.
+
+Use the app's archive tool for managed worktrees and `git worktree remove` for legacy unmanaged worktrees. Disposable caches need no retention. Verify that the checkout is absent from the active worktree list and filesystem, and record cleanup on the issue/PR before the final task report. A concrete blocker needs a reason and owner; hypothetical future reuse is not a reason to leave a finished checkout behind. Do not claim cleanup while it is still pending.
 
 ## GitHub record
 

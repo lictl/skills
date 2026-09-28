@@ -17,3 +17,7 @@
 ## Caveats and follow-ups
 
 {{Unverified boundaries, known blockers, or material limitations; explicitly say None when justified. Link each follow-up issue and explain why it is outside this slice. A required unfinished criterion remains a blocker.}}
+
+## Worktree closeout (after delivery)
+
+{{Pending delivery, Removed and verified, Blocked with reason and owner, or No disposable worktree. The parent records the outcome and necessary evidence on GitHub, then removes the finished worktree and verifies cleanup. Do not retain extra local recovery copies as the work log; protect unfinished and in-use checkouts.}}

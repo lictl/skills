@@ -25,5 +25,6 @@
 - PR base: {{target repository, branch, and starting SHA}}
 - Progress: {{brief current status or blocker}}
 - PR: {{URL or Not yet created}}
+- Worktree closeout: {{Pending delivery, Removed and verified, Blocked with reason and owner, or No disposable worktree}}
 
-{{Record later milestones as concise comments; keep this current summary accurate.}}
+{{Record later milestones as concise comments; keep this current summary accurate. At completion, summarize the outcome, verification, caveats and follow-ups on GitHub, then have the parent remove the finished worktree and record verified cleanup. Do not use extra local recovery copies as the work log.}}
