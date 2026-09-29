@@ -85,7 +85,7 @@ Delegate implementation by default and parallelize independent slices. Use one a
 
 ```text
 Issue #42
-  branch:   codex/issue-42-restart-recovery
+  branch:   agent/issue-42-restart-recovery
   worktree: <fixed-project-root>/.ai/worktree/42-restart-recovery
   PR:       links #42, verification, caveats, and follow-ups
   review:   findings and fixes tied to commit revisions

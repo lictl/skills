@@ -17,7 +17,7 @@ Read project guidance, the current request, and relevant specs/ADRs. Confirm the
 
 - Create or reuse an issue using [the issue template](assets/issue-template.md). State the outcome, scope, acceptance criteria, verification, and dependencies. Link specs rather than copying them. A small task may describe its human-approved intent directly in the issue.
 - Use a parent issue only when several slices need coordination. Give each slice one active worker, branch, worktree, and normally one PR. Coordinate overlapping files, shared interfaces, and numbered docs.
-- Create the worker's checkout at `<fixed-project-root>/.ai/worktree/<issue-number>-<slug>`, using `codex/issue-<number>-<slug>` unless the project specifies another branch convention. Follow [worktree and GitHub details](references/operations.md).
+- Create the worker's checkout at `<fixed-project-root>/.ai/worktree/<issue-number>-<slug>`, using `agent/issue-<number>-<slug>` unless the project specifies another branch convention. Follow [worktree and GitHub details](references/operations.md).
 - Hand over the issue URL, exact worktree path, branch, starting base ref/SHA, and verification expectations. Record the assignment on the issue. Do not have multiple agents write the same checkout.
 
 ## 2. Implement and open the PR
