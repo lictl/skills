@@ -1,30 +1,26 @@
-## Outcome
+<!-- Aim for fewer than 40 Markdown source lines in the opening human summary, using normal prose. Omit irrelevant or empty fields and remove these comments. -->
 
-{{Problem and observable result for this slice; keep implementation mechanisms out unless binding.}}
+## Goal and why
 
-## Intent and scope
+{{Problem, observable outcome, and why it matters. Link the owning intent or briefly identify the dated human direction.}}
 
-- Intent: {{approved spec/criterion links or explicit human request}}
-- Decisions: {{relevant ADRs or None}}
-- Document review: {{ADR/spec changes need human review of the actual revision before merge; planned documents or Not applicable}}
-- In scope: {{bounded change}}
-- Out of scope: {{nearby work excluded}}
+## Scope and success
 
-## Acceptance and verification
+- Scope: {{bounded change and any material exclusions}}
+- Success: {{short observable acceptance criteria and how they will be verified}}
+- Decisions or human action: {{material choices, blockers, or actions needed; include human review of actual ADR/spec revisions before merge when applicable}}
 
-- {{criterion ID or short observable criterion}} — {{planned test or manual check}}
+<!-- Optional trailing section for task pickup. Keep it concise and link authoritative documents instead of copying policy. Material human decisions, blockers and actions belong above. -->
 
-## Dependencies and open questions
+## Agent handoff
 
-{{Parent issue, prerequisite issues/PRs, unresolved material decisions, and what they block; or None.}}
-
-## Assignment and current state
-
+- Context: {{intent/spec/ADR links, dependencies, and exact relevant revision or environment}}
+- Current state and pickup: {{brief progress and next steps or constraints for the next agent}}
+- Verification: {{technical commands/checks, evidence links, and remaining acceptance or environment limits}}
 - Worker: {{agent/task name or Unassigned}}
 - Branch/worktree: {{branch and repository-relative .ai/worktree/<number>-<slug> path}}
 - PR base: {{target repository, branch, and starting SHA}}
-- Progress: {{brief current status or blocker}}
-- PR: {{URL or Not yet created}}
+- PR: {{URL, when available}}
 - Worktree closeout: {{Pending delivery, Removed and verified, Blocked with reason and owner, or No disposable worktree}}
 
-{{Record later milestones as concise comments; keep this current summary accurate. At completion, summarize the outcome, verification, caveats and follow-ups on GitHub, then have the parent remove the finished worktree and record verified cleanup. Do not use extra local recovery copies as the work log.}}
+{{Record later milestones as concise comments and keep the current summary accurate. At completion, record the outcome, tested revision, verification, caveats and follow-ups on GitHub; the parent removes the finished worktree and records verified cleanup. Do not use extra local recovery copies as the work log.}}
